@@ -1,14 +1,14 @@
 # Installation
 
-Télécharger NodeJS : https://nodejs.org/fr/download/
-Cloner le repo : git clone https://github.com/FloPtitos/projetarduino.git
-Se déplaceer dans dans le dossier : cd votreChemin
-Sur l'interpreteur de commande : npm install -g @vue/cli
-Se déplacer dans le dossier Tp_app : cd tp_app
-lancer la commande : npm install
-lancer la commande : npm run serve
-Pour voir le site taper localhost:8080 sur votre navigateur
-
+Télécharger NodeJS : https://nodejs.org/fr/download/ <br/>
+Cloner le repo : git clone https://github.com/FloPtitos/projetarduino.git<br/>
+Se déplaceer dans dans le dossier : cd votreChemin<br/>
+Sur l'interpreteur de commande : npm install -g @vue/cli<br/>
+Se déplacer dans le dossier Tp_app : cd tp_app<br/>
+lancer la commande : npm install<br/>
+lancer la commande : npm run serve<br/>
+Pour voir le site taper localhost:8080 sur votre navigateur<br/>
+<br/>
 Une version en ligne et hébergé existe à l'adresse suivante : 
 
 # Utilisation
