@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="Chart">
     <md-button class="md-primary md-raised" @click="start">Start simulation</md-button>
     <br />
     <br />
@@ -198,7 +198,7 @@ export default {
       // serie => for choosing chart/serie on the page
       // wh => which esp do we want to query data
 
-      this.node_url = "http://51.83.77.127:3000";
+      this.node_url = "http://localhost:3000";
 
       //https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery/1569648-le-fonctionnement-de-ajax
         var liste = []

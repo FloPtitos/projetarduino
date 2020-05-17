@@ -5,7 +5,7 @@
         <router-view></router-view>
       </md-tab>
 
-      <md-tab id="tab-pages" md-label="Arduino List" to="/list">
+      <md-tab id="tab-pages" md-label="Plant List" to="/list">
      <router-view></router-view>
       </md-tab>
     </md-tabs>
