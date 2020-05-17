@@ -2,7 +2,7 @@
 
 Télécharger NodeJS : https://nodejs.org/fr/download/ <br/>
 Cloner le repo : git clone https://github.com/FloPtitos/projetarduino.git<br/>
-Se déplaceer dans dans le dossier : cd votreChemin<br/>
+Se déplacer dans dans le dossier : cd votreChemin<br/>
 Sur l'interpreteur de commande : npm install -g @vue/cli<br/>
 Se déplacer dans le dossier tp_app : <br/>
 ```
@@ -29,6 +29,10 @@ En cliqaunt sur "see details", vous pouvez voir la temperature ainsi que la lumi
 
 # Comment ça marche
 
+## Architecture 
+
+![Architecture](https://i.imgur.com/WotJjCe.png)
+
 ## Cote Esp
 
 Si la température est supérieur a 25°C alors la led (qui simule la pompe) va clignoter cela correspond à l'arrosage de la plante. 
@@ -46,9 +50,6 @@ Le majeur point de difficulté a été l'hebergement du projet, qui a été rég
 Pour le déploiement de notre TP nous avons utilisé OVH.
 Pour ce faire nous sommes passé par Github afin de récupérer les fichiers sur le VPS via SSH. 
 Une fois les fichiers sur le serveur nous avons utilisé pm2 pour permettre au serveur node et au site de tourner en continu sans fenetre ssh ouverte.
-
-
-
 
 # Schéma simplifié 
 ![Schema](https://i.imgur.com/S0xdSAM.png)
