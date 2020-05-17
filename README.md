@@ -9,7 +9,7 @@ lancer la commande : npm install<br/>
 lancer la commande : npm run serve<br/>
 Pour voir le site taper localhost:8080 sur votre navigateur<br/>
 <br/>
-Une version en ligne et hébergé existe à l'adresse suivante : 
+Une version en ligne et hébergé existe à l'adresse suivante : http://51.83.77.127:8080/
 
 # Utilisation
 
