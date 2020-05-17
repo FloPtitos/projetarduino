@@ -1,8 +1,8 @@
 <template>
  <div id="list">
-     <h2>Here are all the arduinos from the fleet</h2>
+     <h2>Here are all the plants from the garden</h2>
     <p>
-      Number of arduinos for each page :
+      Number of plants for each page :
      <!--  <vue-material-slider :min="0" :max="20" v-model="pagesize"></vue-material-slider> -->
       <input
         type="range"
@@ -14,7 +14,7 @@
       />
       {{pagesize}}
     </p>
-    <h1>Number of arduinos : {{nbArduinos}}</h1>
+    <h1>Number of plants : {{nbArduinos}}</h1>
     <h3>Current page : {{ page }}</h3>
     <md-button class="md-raised" v-on:click="firstPage()" v-bind:disabled="page==1">&lt;&lt;</md-button>
     <md-button class="md-raised" v-on:click="previousPage()" v-bind:disabled="page==1">Previous</md-button>
@@ -22,7 +22,7 @@
     <md-button class="md-raised" v-on:click="lastPage()" :disabled="page == nbPagesDeResultats">&gt;&gt;</md-button>
 
     <div class="md-layout">
-      <h2 class="md-title, md-layout-item">Add an arduino</h2>
+      <h2 class="md-title, md-layout-item">Add a plant</h2>
       <md-field class="md-layout-item">
         <md-input placeholder="Mac address" v-model="macAddress" />
       </md-field>
@@ -60,7 +60,7 @@
           <router-link :to="'list/'+item._id">Details</router-link>
         </md-table-cell>
         <md-dialog class="update" :md-active.sync="update">
-          <h2>Update arduino id : {{ arduino._id }}</h2>
+          <h2>Update plant id : {{ arduino._id }}</h2>
           <br />
           <form>
             <md-field>
@@ -96,9 +96,9 @@
         </md-table-cell>
 
         <md-dialog class="update" :md-active.sync="del">
-          <h2>Delete arduino id : {{ arduino._id }}</h2>
+          <h2>Delete plant id : {{ arduino._id }}</h2>
           <br />
-          <p>Do you really want to delete this arduino ?</p>
+          <p>Do you really want to delete this plant ?</p>
           <md-dialog-actions>
             <md-button
               class="md-primary"
@@ -144,7 +144,7 @@
       pagesize: 10,
       nomRecherche: "",
       nbPagesDeResultats: 0,
-      apiURL: "http://localhost:3000/api/arduinos"
+      apiURL: "http://51.83.77.127:3000/api/arduinos"
     };
   },
 
@@ -215,7 +215,7 @@
       // eviter le comportement par defaut
       event.preventDefault();
       let dataForm = new FormData();
-      dataForm.append("mac address", this.macAddress);
+      dataForm.append("macAddress", this.macAddress);
       dataForm.append("name", this.name);
 
       let reponseJSON = await fetch(this.apiURL, {

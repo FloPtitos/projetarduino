@@ -7,10 +7,10 @@
     <md-card md-with-hover style="width:60% ; margin:auto;">
       <md-ripple>
         <md-card-header>
-          <div class="md-title">Arduino's name : {{arduino.name}}</div>
+          <div class="md-title">Plant's name : {{arduino.name}}</div>
           <br />
           <div>Mac Address : {{arduino.macAddress}}</div>
-          <div>Arduino ID : {{arduino._id}}</div>
+          <div>Plant ID : {{arduino._id}}</div>
         </md-card-header>
 
         <md-card-actions>
@@ -37,7 +37,7 @@
   },
   data: function() {
     return {
-      apiURL: "http://localhost:3000/api/arduinos",
+      apiURL: "http://51.83.77.127:3000/api/arduinos",
       arduino: []
     };
   },

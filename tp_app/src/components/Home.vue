@@ -1,8 +1,8 @@
 
 
 <template>
-<div>
-     <h1>Welcome to our weather forecast website !</h1> 
+<div id="title"> 
+     <h1>Welcome to our e-gardening  website !</h1> 
 </div>
  
 </template>
@@ -12,3 +12,8 @@
 
   }
 </script>
+<style scoped>
+  #title {
+    text-align: center;
+  }
+</style>
