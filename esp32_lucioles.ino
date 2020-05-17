@@ -10,9 +10,10 @@
 #include "net_misc.h"
 
 /*============= GPIO ======================*/
-const int ledPin = 19; // LED Pin
-const int photo_resistor_pin = 33;
-OneWire oneWire(23);
+const int ledPin = 19; // LED Pin Arroseur
+const int ledPinLumiere = 18; // LED Pin Lumiere
+const int photo_resistor_pin = 33; // Lumiere
+OneWire oneWire(23); // Température
 DallasTemperature tempSensor(&oneWire);
 
 WiFiClient espClient; // Wifi
@@ -35,6 +36,7 @@ const char* mqtt_server = "broker.hivemq.com";
 void setup () {
   // Gpio
   pinMode (ledPin , OUTPUT);
+  pinMode (ledPinLumiere , OUTPUT);
   // Serial
   Serial.begin (9600);
   
@@ -50,6 +52,7 @@ void setup () {
   /* Choix d'une identification pour cet ESP ---*/
   // whoami = "esp1"; 
   whoami =  String(WiFi.macAddress());
+  tempSensor.begin();
 }
 
 /*============== MQTT CALLBACK ===================*/
@@ -74,6 +77,8 @@ void mqtt_pubcallback(char* topic, byte* message, unsigned int length) {
   deserializeJson(json_doc, messageTemp);
   if (String(topic) == TOPIC_LED && json_doc["who"] == WiFi.macAddress()) {
     set_pin(ledPin,HIGH);
+    delay(5000); //on suppose un arrosage de 5s
+    set_pin(ledPin,LOW);
   }
 }
 
@@ -137,6 +142,24 @@ void rejoindre_flotte(){
 }
 /*================= LOOP ======================*/
 void loop () {
+ 
+  
+  if(get_temperature() >25){ //clignote quand il fait trop chaud et simule la pompe
+    digitalWrite(ledPin, HIGH); // Allume la pompe
+    delay(1000);
+    digitalWrite(ledPin, LOW);  
+  }
+
+ // photo_resistor_pin = analogRead (A0);
+
+  if(get_light() < 500){ // Pour les plantes nocturnes s'il fait nuit on leur allume une petite source de lumiere
+    digitalWrite(ledPinLumiere, HIGH);
+  }
+  if(get_light() >= 500){ // on éteint quand il fait jour
+    digitalWrite(ledPinLumiere, LOW); 
+  }
+  
+  
   char data[80];
   String payload; // Payload : "JSON ready" 
   int32_t period = 500l; // Publication period

@@ -1,10 +1,12 @@
 <template>
   <div id ="Chart">
     <md-button class="md-primary md-raised" @click="start">Start simulation</md-button>
+    <md-button class="md-accent md-raised" @click="switchState(arduino.macAddress)">Turn on sprinkler</md-button>
     <br />
     <br />
     <h1> {{ this.arduino.name}} </h1>
     <br>
+     
     <highcharts :options="options" ref="highcharts"></highcharts>
     <highcharts :options="options2" ref="highcharts"></highcharts>
   </div>
@@ -130,9 +132,11 @@ export default {
       node_url: "",
       items: [],
       apiURL: "http://localhost:3000/api/arduinos",
+      url: "http://localhost:3000",
       options: options,
       options2: options2,
-      listeData: []
+      listeData: [],
+      weather : []
     };
   },
   mounted(){
@@ -140,7 +144,7 @@ export default {
   },
   methods: {
        
-    start: function() {
+    async start(){
       /*    var chart = this.$refs.highcharts.chart;
       chart.credits.update({
         style: {
@@ -149,8 +153,17 @@ export default {
       }); */
        
         this.process_esp(this.arduino);
-        
      
+       var uri = "http://api.weatherstack.com/current?access_key=bd8775c66b89d500861379436231b26e&query=Nice"
+            let responseJSON = await fetch(uri, {
+        method: "GET"
+      });
+      let responseJS = await responseJSON.json();
+      this.weather = responseJS.current;
+     
+      if(this.weather.temperature > 25 && this.weather.precip<=0){ //si temperature superieure à 25° C et qu'il ne pleut pas déjà on allume les arroseurs
+        this.switchState(this.arduino.macAddress)
+      }
     },
 
      async getDataFromServer() {
@@ -161,6 +174,21 @@ export default {
       });
       let responseJS = await responseJSON.json();
       this.arduino = responseJS.arduino;
+    },
+
+     async switchState(wh) {
+      var url = this.url + "/esp/led";
+      var message = "on";
+      var header = new Headers();
+      header.append("Content-Type", "application/json");
+      await fetch(url, {
+        method: "POST",
+        headers: header,
+        body: JSON.stringify({
+          message: message,
+          who: wh
+        })
+      });
     },
     process_esp(arduino) {
       const refreshT = 100000; // Refresh period for chart
