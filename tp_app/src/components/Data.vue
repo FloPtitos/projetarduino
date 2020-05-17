@@ -131,8 +131,8 @@ export default {
       arduino: [],
       node_url: "",
       items: [],
-      apiURL: "http://51.83.77.127:3000/api/arduinos",
-      url: "http://51.83.77.127:3000",
+      apiURL: "http://localhost:3000/api/arduinos",
+      url: "http://localhost:3000",
       options: options,
       options2: options2,
       listeData: [],
@@ -223,7 +223,7 @@ export default {
       // serie => for choosing chart/serie on the page
       // wh => which esp do we want to query data
 
-      this.node_url = "http://51.83.77.127:3000";
+      this.node_url = "http://localhost:3000";
 
       //https://openclassrooms.com/fr/courses/1567926-un-site-web-dynamique-avec-jquery/1569648-le-fonctionnement-de-ajax
         var liste = []

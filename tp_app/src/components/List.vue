@@ -144,7 +144,7 @@
       pagesize: 10,
       nomRecherche: "",
       nbPagesDeResultats: 0,
-      apiURL: "http://51.83.77.127:3000/api/arduinos"
+      apiURL: "http://localhost:3000/api/arduinos"
     };
   },
 
