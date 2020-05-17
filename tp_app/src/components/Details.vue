@@ -37,7 +37,7 @@
   },
   data: function() {
     return {
-      apiURL: "http://localhost:3000/api/arduinos",
+      apiURL: "http://51.83.77.127:3000/api/arduinos",
       arduino: []
     };
   },
