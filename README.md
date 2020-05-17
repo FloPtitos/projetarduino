@@ -34,3 +34,6 @@ Nous avons également implémenté un bouton pour lancer l'arrosage à partir de
 # Difficulté 
 
 
+
+# Schéma simplifié 
+![Schema](https://i.imgur.com/S0xdSAM.png)
